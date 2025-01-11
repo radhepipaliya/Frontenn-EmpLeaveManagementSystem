@@ -11,6 +11,7 @@ import AdminDashboard from './components/AdminDashboard';
 import Leave from './components/Leave';
 import LeaveRequest from './components/LeaveRequest';
 import UserLeave from './components/UserLeave';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   return (
@@ -37,8 +38,9 @@ function App() {
               {EmployeeServices.isUser() && (
                 <>
                   <Route path="/dashboard" element={<AdminDashboard />} />
+                  <Route path="/employee" element={<ProfilePage/>} />
                   <Route path="/leave" element={<><Leave/><UserLeave/></>} />
-                  <Route path="/employee" element={<AdminDashboard />} />
+                  
                 </>
               )}
 

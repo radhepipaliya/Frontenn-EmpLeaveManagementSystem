@@ -61,7 +61,6 @@ class EmployeeServices {
 
     static async applyLeave(leaveDetails, token) {
         try{
-            alert("Heeellllloooo")
             const response = await axiosInstance.post(`${EmployeeServices.BASE_URL}/public/applyleave`, leaveDetails , 
             { 
                 headers: { Authorization: `Bearer ${token}` } 
@@ -148,7 +147,20 @@ class EmployeeServices {
             console.log(error);
         }
     }
-
+  
+    static async getEmployee(employeeid, token) {
+        try{
+            const response = await axiosInstance.get(`${EmployeeServices.BASE_URL}/public/get-user-info/${employeeid}`, 
+            { 
+                headers: { Authorization: `Bearer ${token}` } 
+            });
+            return response.data;
+        }
+       
+        catch(error){
+            console.log(error);
+        }
+    }
 
 
 
