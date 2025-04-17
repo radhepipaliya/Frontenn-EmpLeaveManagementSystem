@@ -12,14 +12,14 @@ function LeaveRequest() {
     const fetchApplications = async () => {
         try {
             const token = localStorage.getItem('token');
-            console.log('Token:', token); // Debugging line
+            console.log('Token:', token);
             if (!token) {
                 console.error('No token found in localStorage');
                 return;
             }
 
             const response = await EmployeeServices.getallapplication(token);
-            console.log('API Response:', response); // Debugging line
+            console.log('API Response:', response);
 
             if (response && response.leaveDetailsList) {
                 setleave(response.leaveDetailsList);
@@ -41,10 +41,8 @@ function LeaveRequest() {
             }
     
             const statusPayload = { status: "Accepted" };
-            console.log(statusPayload) // Example payload
+            console.log(statusPayload)
             await EmployeeServices.updateApplicationStatus(applicationId, statusPayload, token);
-    
-            // Refresh the applications after update
             fetchApplications();
         } catch (error) {
             console.error('Error updating application status:', error);
@@ -61,10 +59,8 @@ function LeaveRequest() {
             }
     
             const statusPayload = { status: "Rejected" };
-            console.log(statusPayload) // Example payload
+            console.log(statusPayload)
             await EmployeeServices.updateApplicationStatus(applicationId, statusPayload, token);
-    
-            // Refresh the applications after update
             fetchApplications();
         } catch (error) {
             console.error('Error updating application status:', error);
@@ -135,7 +131,7 @@ function LeaveRequest() {
                                                     {leave.id}
                                                 </th>
                                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    {leave.employeeid}
+                                                {`${leave.employee.firstName} ${leave.employee.lastName}`}
                                                 </th>
                                                 <td className="px-6 py-4">
                                                     {leave.leaveType}

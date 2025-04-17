@@ -93,7 +93,8 @@ function UserLeave() {
                                                         {leave.id}
                                                     </th>
                                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        {leave.employeeid}
+                                                    {`${leave.employee.firstName} ${leave.employee.lastName}`}
+
                                                     </th>
                                                     <td className="px-6 py-4">
                                                         {leave.leaveType}
